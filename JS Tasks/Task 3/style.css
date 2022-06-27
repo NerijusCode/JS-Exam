@@ -59,3 +59,21 @@
   border-radius: 5px;
   background-color: #fff;
 }
+table {
+  width: 100%;
+}
+img {
+  width: 100px;
+}
+table,
+th,
+tr,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr {
+  width: 50%;
+  text-align: center;
+}
