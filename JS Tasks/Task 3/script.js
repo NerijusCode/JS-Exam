@@ -10,42 +10,44 @@ Paspaudus mygtuką "Show users":
 Pastaba: Sukurta kortelė, kurioje yra pateikiama vartotojo informacija, turi 
 turėti bent minimalų stilių ir būti responsive;
 -------------------------------------------------------------------------- */
-'use strict'
+'use strict';
 
-const state = {};
- 
- const baseURL = 'https://api.github.com/users';
+const ENDPOINT = "https://api.github.com/users";
 
+document.getElementById("btn").addEventListener("click", function () {
 
+const output = document.getElementById("output");
+output.innerHTML = `
+<table id="usersBox">
+        <thead>
+            <tr>
+                <th id="thead-style" width="40%">Login</th>
+                <th id="thead-style" width="50%">Avatar</th>
+            </tr>
+        </thead>
+        <tbody usersInfo></tbody>
+    </table>
+`;
+function usersData() {
+  return fetch(ENDPOINT).then((response) => response.json());
+};
 
- 
-const fetchData = async () => {
-    try {
-      const response = await fetch(baseURL);
-      if (response.ok) {
-        state.cars = await response.json();
-        populateTable(state.cars)
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  function populateTable(cars) {
-    const tbody = document.querySelector('tbody');
-    tbody.innerHTML = '';
-    cars.forEach((car) => {
-        console.log(car);
-        const tr = document.createElement('tr');
- 
-        const brand = document.createElement('td');
-        brand.innerText = car.brand;
- 
-        const model = document.createElement('td');
-        model.innerText = car.model;
- 
-        tr.append(brand, model);
-        tbody.append(tr);
-      });
-  };
-  
-  fetchData();
+usersData()
+  .then((data) => {
+    createTableSkeleton(data);
+  })
+  .catch((event) => console.log(event));
+
+function createTableSkeleton(data) {
+  let usersInfo = document.querySelector("[usersInfo]");
+  usersInfo.innerHTML = "";
+  data.map((table) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <th>${table.login}</th>
+        <th><img src="${table.avatar_url}"></th>
+        `;
+    usersInfo.append(tr);
+  });
+}
+});
