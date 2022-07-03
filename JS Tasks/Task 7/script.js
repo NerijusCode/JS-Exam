@@ -16,6 +16,6 @@ function showObjectKeys(objArg) {
   
   console.log(objkeys);
 
-  document.querySelector('body').innerHTML = objkeys;
+  document.querySelector('body').innerHTML = objkeys; //kadangi objkeys naudojamas tik čia, tai jam dedikuoto kintamojo ir nereikėjo. Taip pat, kadangi tai yra tiesiog masyvas, be jokių html tagų, tai vietoj innerHTML reikėtų naudoti innerText = Object.keys(objArg);
 };
 showObjectKeys(audi);

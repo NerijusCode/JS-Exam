@@ -26,7 +26,7 @@ class Movie {
   }
   };
   
-  let pirmasFilmas = new Movie('Kill Bill', 'Tarantino', 99999999);
+  let pirmasFilmas = new Movie('Kill Bill', 'Tarantino', 99999999); //čia galėjot ir const panaudoti vietoj let
 
 
 console.log(pirmasFilmas.getIntroduction());

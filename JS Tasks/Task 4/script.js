@@ -15,14 +15,14 @@ const ENDPOINT = 'cars.json';
  
 const state = {};
  
- const baseURL = 'https://olive-bead-glazer.glitch.me';
+ const baseURL = 'https://olive-bead-glazer.glitch.me'; //kam šitas?
 
 
 
  
 const fetchData = async () => {
     try {
-      const response = await fetch(baseURL);
+      const response = await fetch(ENDPOINT);
       if (response.ok) {
         state.cars = await response.json();
         populateTable(state.cars)
@@ -32,6 +32,7 @@ const fetchData = async () => {
     }
   };
   function populateTable(cars) {
+    //čia kažkas pamiršta prirašyti. Table ši užduotis dar neturi.
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
     cars.forEach((car) => {

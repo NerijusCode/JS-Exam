@@ -24,7 +24,7 @@ let totalAge = 0;
 
 function getUserAverageAge() {
 
-users.forEach(function (obj) {
+users.forEach(function (obj) { //su reduce funkcija čia būtų buvę patogiau.
   totalAge += obj["age"];
   });
 const AvarageAge = totalAge / users.length;
@@ -36,6 +36,6 @@ getUserAverageAge();
 newArray = users.map(getFullNames);
 
 function getFullNames(item) {
-  return [item.name];
+  return [item.name]; //return [item.name]; grąžina kiekvieną name atskirame masyve. [] čia nereikalingi
 };
 console.log(newArray);
