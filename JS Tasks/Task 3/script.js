@@ -14,7 +14,7 @@ turėti bent minimalų stilių ir būti responsive;
 
 const ENDPOINT = "https://api.github.com/users";
 
-document.getElementById("btn").addEventListener("click", function () {
+document.getElementById("btn").addEventListener("click", function () { //tokiose vietose geriau būtų naudoti arrow funkcijų sintaksę. () => {}
 
 const output = document.getElementById("output");
 output.innerHTML = `
@@ -43,8 +43,9 @@ function createTableSkeleton(data) {
   usersInfo.innerHTML = "";
   data.map((table) => {
     const tr = document.createElement("tr");
+    //th tagai naudojami tik headeriams. table bodyje jau reikia naudoti tik td
     tr.innerHTML = `
-        <th>${table.login}</th>
+        <th>${table.login}</th> 
         <th><img src="${table.avatar_url}"></th>
         `;
     usersInfo.append(tr);

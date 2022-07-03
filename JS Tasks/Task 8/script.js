@@ -25,7 +25,7 @@ function Calculator(a, b) {
   }
 };
 
-  const testas = new Calculator(5, 6);
+  const testas = new Calculator(5, 6); //const atėjo tik su ES6
 
   console.log(testas.sum());
   console.log(testas.subtraction());
